@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLangFromUrl, getHeaderOptions } from "../i18n/utils";
+
+import logo from "../assets/logo1.svg";
+
+const lang = getLangFromUrl(Astro.url);
+const homeUrl = getRelativeLocaleUrl(lang, "/");
+const options = getHeaderOptions(lang);
+---
+
+<header class="flex items-center justify-around w-full h-24">
+    <a href={homeUrl}>
+        <Image src={logo} alt="Lmgb logo" height={80} width={80} />
+    </a>
+    <nav>
+        <ul class={`grid grid-flow-col auto-cols-auto divide-x divide-black`}>
+            {
+                options.map((option) => (
+                    <li class="text-center px-4">
+                        <a href={option.href} target={option.target}>
+                            {option.text}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+</header>
