@@ -1,0 +1,93 @@
+---
+import { Image } from "astro:assets";
+import hero from "../../assets/others/hero-bg.webp";
+import pizza from "../../assets/others/pizza.webp";
+import ready from "../../assets/others/ready.webp";
+---
+
+<main class="container mx-auto text-center text-6xl">
+    <div class="fixed top-4 right-4 text-4xl flex z-10 motion-preset-oscillate">
+        <span class="inline-block mr-4">Scroll Down</span>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-9"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"></path>
+        </svg>
+    </div>
+    <p id="content1" class="my-24 content opacity-0">Join us for</p>
+    <h1 class="text-center text-7xl my-24">Roberta Gonzalez birthday</h1>
+    <Image id="image1" src={hero} alt="Roberta Gonzalez invite" />
+    <p id="content2" class="my-24 content opacity-0">
+        !!Man!! We love pizza...
+    </p>
+    <p id="content3" class="my-24 content opacity-0">
+        I hope Roberta has pizza on her party
+    </p>
+    <Image id="image2" src={pizza} alt="There is going to be pizza" />
+    <p id="content4" class="my-24 content opacity-0">
+        We are ready to, where is it?...
+    </p>
+    <p id="content5" class="mt-8 content opacity-0">At Pump It Up Kirkland</p>
+    <p id="content6" class="mb-8 content opacity-0 mt-4 text-4xl">
+        11605 NE 116th St, Kirkland, WA 98034
+    </p>
+    <p id="content7" class="my-24 content opacity-0">When is it?...</p>
+    <p id="content8" class="my-24 content opacity-0">
+        Saturday Feb 8th at 7:00 pm
+    </p>
+    <Image id="image3" src={ready} alt="Ready to go, make sure to RSVP" />
+    <p id="content9" class="my-24 content opacity-0">
+        Should we let anyone know?...
+    </p>
+    <p id="content10" class="my-24 content opacity-0">
+        Please RSVP to maydrc@gmail.com or 479-685-6478
+    </p>
+    <p id="content11" class="my-24 pb-80 opacity-0">
+        We hope to see you there!
+    </p>
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        for (let i = 1; i <= 11; i++) {
+            gsap.to(`#content${i}`, {
+                scrollTrigger: {
+                    trigger: `#content${i}`,
+                    toggleActions: "play pause resume reset",
+                    start: "top 80%",
+                },
+                duration: 1,
+                opacity: 1,
+            });
+        }
+
+        for (let i = 1; i <= 3; i++) {
+            gsap.fromTo(
+                `#image${i}`,
+                {
+                    scale: 0,
+                },
+                {
+                    scrollTrigger: {
+                        trigger: `#image${i}`,
+                        toggleActions: "play pause resume reset",
+                        start: "top 80%",
+                    },
+                    duration: 1,
+                    scale: 1,
+                    ease: "bounce.out",
+                },
+            );
+        }
+    </script>
+</main>

@@ -7,8 +7,9 @@ export default {
     extend: {
       fontFamily: {
         mono: ["Source Code Pro Variable", ...defaultTheme.fontFamily.mono],
+        nanum: ["Nanum Pen Script", ...defaultTheme.fontFamily.sans],
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-motion")],
 };
